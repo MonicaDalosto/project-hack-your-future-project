@@ -252,7 +252,7 @@ p.sourcePattern {
 
 .patternsImage {
   width: 30%;
-  padding: 1em;
+  margin: 1em;
 }
 
 .tablePattern {
@@ -286,13 +286,12 @@ thead th {
 }
 
 tbody tr {
-  /* height: 2em; */
   border-bottom: 1px solid var(--color-tertiary);
 }
 
 tbody td {
   height: 2em;
-  padding: 0.5em 1em 0.5em 1em;
+  padding: 0.5em 1em;
   
 }
 
@@ -301,6 +300,7 @@ tbody td {
   height: 100px;
   background-position: center bottom; /* Because the image is higher than the header, I positioned it in the center of it. */
 }
+
 .footerContent {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.400); /* Black Transparent */
@@ -343,7 +343,7 @@ tbody td {
   transform: translate(-50%, -50%);
 }
 
-/* The responsiveness of the page: When the screen is less than 945 pixels wide: */
+/* The responsiveness of the page: When the screen is less than 900 pixels wide: */
 /* Hide all links of the menu, and show the element .iconMenu on the right side of the screen; */
 @media screen and (max-width: 900px) {
   .navMenu .ulMenuBigScreen {
@@ -362,7 +362,6 @@ tbody td {
     float: right;
     display: block;
     margin: 5px 10px;
-    /* padding: 3px 10px; */
   }
 
   .divMenuMobile .active li {
@@ -390,5 +389,45 @@ tbody td {
   
   .tablePattern {
     width: 80%;
+  }
+}
+
+/* The responsiveness of the page: When the screen is less than 500 pixels wide: */
+@media screen and (max-width: 500px) {
+  header {
+    height: 200px;
+  }
+
+  h1 {
+    padding: 25px 15px 15px 15px;
+    font-size: 3em;
+  }
+
+  .navMenu a:hover {
+    color: white;
+  }
+
+  .divMenuMobile .active {
+    margin: 12px 5px;
+  }
+
+  .divMenuMobile .active li {
+    font-size: 0.8em;
+  }
+
+  .patternsImage {
+    margin: 0.5em;
+  }
+
+  .tablePattern {
+    margin: 0.5em 0;
+  }
+
+  table {
+    font-size: 0.8em;
+  }
+
+  thead th, tbody td {
+    padding: 0.5em;
   }
 }
