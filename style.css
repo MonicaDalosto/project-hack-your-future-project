@@ -296,26 +296,29 @@ tbody td {
 /* Style the footer elements: */
 .footer {
   height: 100px;
-  padding-bottom: 1em;
   background-position: center bottom; /* Because the image is higher than the header, I positioned it in the center of it. */
 }
+.footerContent {
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.400); /* Black Transparent */
+}
 
-.footer .copyright {
+.footerContent .copyright {
   font-size: 14px;
   color: white;
 }
 
-footer a .fab {
+.footerContent a .fab {
   padding: 1em;
   color: white;
   font-size: 150%;
 }
 
-footer .fa-linkedin:hover {
+.footerContent .fa-linkedin:hover {
   color: var(--color-linkedin);
 }
 
-footer .fa-github-square:hover {
+.footerContent .fa-github-square:hover {
   color: var(--color-github);
 }
 
