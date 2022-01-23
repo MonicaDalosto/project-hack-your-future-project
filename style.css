@@ -37,7 +37,7 @@ body {
   background-color: white;
   box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.200);
 }
-/* I created a class that is styling the background image of Header and Footer */
+/* I created a class that is styling the background image of Header and Footer. This image doesn't have the alt attribute, so I have added a title attribute on each element instead.*/
 .backgroundHeaderFooter {
   background-image: url(https://images.pexels.com/photos/4792086/pexels-photo-4792086.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
   background-size: cover; /* The image is covering all the header/footer background, because the image is less wider than the container; */
@@ -111,11 +111,11 @@ h2, h3, p {
   color: var(--color-primary);
 }
 
-h2 {
+/* h2 {
   font-size: 2em;
   margin: 1em 0 1em 0;
   text-align: center;
-}
+} */
 
 p {
   margin: 1em;
@@ -162,7 +162,7 @@ p {
 }
 
 /* The text will be in the center of the father element. We set the line-height bigger, because the bord will be close to the father element's bord. The border-radius will set the elliptical shape to the element as the father element */
-.division .textDivision i {
+.division .textDivision h2 {
   position: absolute; /* Set the absolute */
   top: 4px;
   bottom: 4px;
@@ -189,7 +189,6 @@ p {
 
 .sections {
   margin: 30px 10px;
-  /* border: 1px solid black; */
 }
 
 .sectionImages {
@@ -204,8 +203,12 @@ p {
   padding: 5px;
 }
 
-#tutorial p {
-  padding: 1em;
+.tutorialContent {
+  margin: 50px 20px;
+}
+
+.tutorialContent p {
+  margin: 32px;
 }
 
 /* Make the video responsiveness in small screens. The video is inside a new container, and its position is absolute, and in the top of the container. If I don't put the iframe inside a container with relative position, the absolute position of iframe will be referent to the body and not to the father element; The size of the padding-bottom is the 56.25% of the width, the original proportion of the video; */
