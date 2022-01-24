@@ -16,7 +16,7 @@
 }
 
 /* Reset some styles from the browser; */
-*, body, main, header, section, footer, div, ul, li, h1, h2, h3, p { 
+body, main, header, section, footer, div, h1, h2, h3, p, header ul, header li, footer ul, footer li, header a, footer a { 
   margin: 0;
   padding: 0;
   list-style: none;
@@ -106,21 +106,27 @@ h1 {
 }
 
 /* Style the other elements of the webpage: */
-h2, h3, p {
+h2, h3, p, .sections li {
   font-family: var(--font-primary);
   color: var(--color-primary);
 }
-
-/* h2 {
-  font-size: 2em;
-  margin: 1em 0 1em 0;
-  text-align: center;
-} */
 
 p {
   margin: 1em;
   font-size: 1em;
   text-align: justify;
+}
+
+/* .sections ul {
+  margin-right: 50px;
+}  */
+
+.sections ul li {
+  list-style-type: circle;
+  list-style-position: inside;
+  font-size: 0.9em;
+  line-height: 1.5em;
+  margin-right: 50px;
 }
 
 /* Style the divisions between the sections with the header of each one. I will create a shadow with the text in the middle, which will be the header content of each section */
