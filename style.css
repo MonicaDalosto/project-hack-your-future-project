@@ -16,7 +16,7 @@
 }
 
 /* Reset some styles from the browser; */
-body, main, header, section, footer, div, h1, h2, h3, p, header ul, header li, footer ul, footer li, header a, footer a { 
+body, main, header, section, footer, div, h1, h2, h3, p, header ul, header li, footer ul, footer li, header a, footer a, .sections a { 
   margin: 0;
   padding: 0;
   list-style: none;
@@ -94,10 +94,9 @@ h1 {
   font-size: 1em;
 }
 
-/* Customize the navMenu when links on hover, the color will change with a smooth way: */
-.navMenu a:hover {
-  color: var(--color-primary);
-  transition: 0.4s;
+/* Customize the navMenu when href on hover, the text decorarion will be underline: */
+.navMenu a:hover, .sections a:hover {
+  text-decoration: underline;
 }
 
 /* Hide the .ilMenuSmallScreen that should be shown just in certain moments on the smalls screens. Inside of it, it will have an .iconMenu, which will open and close the .navMenu */
@@ -106,7 +105,7 @@ h1 {
 }
 
 /* Style the other elements of the webpage: */
-h2, h3, p, .sections li {
+h2, h3, p, .sections li, .sections p a {
   font-family: var(--font-primary);
   color: var(--color-primary);
 }
@@ -209,7 +208,12 @@ p {
   padding: 5px;
 }
 
-.tutorialContent, .inspirationsContent {
+.inspirationsContent {
+  /* min-height: 805px; */
+  margin: 50px 20px;
+}
+
+.tutorialContent {
   margin: 50px 20px;
 }
 
@@ -240,9 +244,12 @@ h3 {
   font-size: 1.2em;
 }
 
-p.sourcePattern {
-  font-size: 0.5em;
+.sourcePattern {
+  display: block;
+  margin: 2px;
+  font-size: 0.8em;
   text-align: right;
+  color: var(--color-secondary);
 }
 
 .patternsImage {
@@ -289,16 +296,33 @@ tbody td {
   padding: 0.5em 1em;
   
 }
-
-/* The .patterns elements will start hidden, and they will be shown in a carousel using javascript code: */
-/* .patterns {
-  display: none;
-} */
-
-/* The class .showDiv will set the display: block to the elements with the class .patterns each one separately: */
-.sections .patterns .showDiv {
-  display: block;
+.carouselTools {
+  width: 80%;
+  margin: auto auto;
 }
+
+.carouselTools button {
+  background-color: white;
+  border: none;
+  border-radius: 125px/12px;
+  color: var(--color-secondary);
+  font-size: 40px;
+}
+
+.carouselTools button:hover {
+  color: var(--color-primary);
+  transition: 0.4s;
+}
+
+/* The pattern2 and the pattern3 elements will start hidden, and they will be shown in a carousel using javascript code: */
+.sections .inspirationsContent .carouselInactive {
+  display: none;
+}
+
+/* The class .carouselActive will set the display: block to the elements. The javascript code will add and remove the classes to make the carousel happens: */
+/* .sections .inspirationsContent .carouselActive {
+  display: flex;
+} */
 
 /* Style the footer elements: */
 .footer {
@@ -408,10 +432,6 @@ tbody td {
     font-size: 3em;
   }
 
-  .navMenu a:hover {
-    color: white;
-  }
-
   .divMenuMobile .active {
     margin: 12px 5px;
   }
@@ -428,11 +448,19 @@ tbody td {
     margin: 0.5em 0;
   }
 
+  .sections a {
+    text-decoration: underline;
+  }
+
   table {
     font-size: 0.8em;
   }
 
   thead th, tbody td {
     padding: 0.5em;
+  }
+
+  .carouselTools button {
+    font-size: 20px;
   }
 }
