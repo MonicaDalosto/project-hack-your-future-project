@@ -1,5 +1,5 @@
 /* Adding some fonts from fonts.google: */
-@import url('https://fonts.googleapis.com/css2?family=Delius&family=Norican&family=Sacramento&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Delius&family=Sacramento&display=swap');
 
 /* Set the colors for the webpage */
 :root {
@@ -11,7 +11,6 @@
   --color-github: #171515;
   
   --font-primary: 'Delius', cursive;
-  /* --font-secondary: 'Norican', cursive; */
   --font-secondary: 'Sacramento', cursive;
 }
 
@@ -71,8 +70,6 @@ h1 {
 
 /* Style the menu on big screens: on the horizontal way, on the right of the screen.*/
 .navMenu {
-  /* margin-top: 10px; */
-  /* overflow: hidden; */
   align-items: center;
 }
 
@@ -165,10 +162,11 @@ p {
 /* The text will be in the center of the father element. We set the line-height bigger, because the bord will be close to the father element's bord. The border-radius will set the elliptical shape to the element as the father element */
 .division .textDivision h2 {
   position: absolute; /* Set the absolute */
-  top: 4px;
+  /* top: 4px;
   bottom: 4px;
   left: 4px;
-  right: 4px;
+  right: 4px; */
+  inset: 4px; /* This property is a shorthand to define the top, right, bottom, left properties;*/
   border-radius: 100%;
   border: 1px dashed var(--color-primary);
   text-align: center;

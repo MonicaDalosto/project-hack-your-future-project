@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)https://cdpn.io/MonicaDalosto/fullcpgrid/ExbYOyR -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  
+  
+<link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+<meta name="apple-mobile-web-app-title" content="CodePen">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+
+<link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
+
+
+  <title>CodePen - Hack Your Future - Amigurumi Project</title>
+  
+  
+  
+  
+<style>
+/* Adding some fonts from fonts.google: */
+@import url('https://fonts.googleapis.com/css2?family=Delius&family=Sacramento&display=swap');
+
+/* Set the colors for the webpage */
+:root {
+  --color-primary: #261210;
+  --color-secondary: #AD9C80;
+  --color-tertiary: #f2f2f2;
+  
+  --color-linkedin: #0077b5;
+  --color-github: #171515;
+  
+  --font-primary: 'Delius', cursive;
+  --font-secondary: 'Sacramento', cursive;
+}
+
+/* Reset some styles from the browser; */
+body, main, header, section, footer, div, h1, h2, h3, p, header ul, header li, footer ul, footer li, header a, footer a, .sections a { 
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+/* General style: */
+body {
+  background-image: radial-gradient(circle farthest-side, #B5B5A9, #C9DCE3);
+}
+
+/* Style the .container: distribuition, max width etc. It is the div inside the body, which surround all the page's content. I set the max-width to show the content in a good look way on the big screens.  */
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 1140px;
+  margin: auto auto; /* Put the container on the center of the page*/
+  background-color: white;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.200);
+}
+/* I created a class that is styling the background image of Header and Footer. This image doesn't have the alt attribute, so I have added a title attribute on each element instead.*/
+.backgroundHeaderFooter {
+  background-image: url(https://images.pexels.com/photos/4792086/pexels-photo-4792086.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
+  background-size: cover; /* The image is covering all the header/footer background, because the image is less wider than the container; */
+}
+
+/* Style the header: I set the image of some Amigurumis as a background of the header.*/
+header {
+  background-position: center center; /* Because the image is higher than the header, I positioned it in the center of it. */
+  height: 400px; /* */
+  position: relative;
+}
+
+/* Style the div inside the header, which contains the logo img, the h1, and the navigation bar */
+header .headerContent {
+  background-color: rgba(0, 0, 0, 0.400); /* Black Transparent */
+  position: fixed;
+  z-index: 1;
+  max-width: 1140px;
+  margin: auto auto;
+  width: 100%;
+  height: 120px;
+}
+
+h1 {
+  padding: 10px 15px 10px 50px;
+  font-size: 4em;
+  font-family: var(--font-secondary);
+  color: white;
+  float: left;
+}
+
+/* Style the menu on big screens: on the horizontal way, on the right of the screen.*/
+.navMenu {
+  /* margin-top: 10px; */
+  /* overflow: hidden; */
+  align-items: center;
+}
+
+.navMenu .divMenu {
+  float: right;
+  padding: 55px 15px 10px 15px;
+  position: relative;
+}
+
+/* Style the links inside the navigation bar, and the float on the left of the page: */
+.navMenu .ulMenuBigScreen li {
+  display: inline;
+  margin: 0 10px;
+}
+
+.navMenu a {
+  color: white;
+  font-family: var(--font-primary);
+  font-size: 1em;
+}
+
+/* Customize the navMenu when href on hover, the text decorarion will be underline: */
+.navMenu a:hover, .sections a:hover {
+  text-decoration: underline;
+}
+
+/* Hide the .ilMenuSmallScreen that should be shown just in certain moments on the smalls screens. Inside of it, it will have an .iconMenu, which will open and close the .navMenu */
+.navMenu .ulMenuSmallScreen, a.iconMenu {
+  display: none;
+}
+
+/* Style the other elements of the webpage: */
+h2, h3, p, .sections li, .sections p a {
+  font-family: var(--font-primary);
+  color: var(--color-primary);
+}
+
+p {
+  margin: 1em;
+  font-size: 1em;
+  text-align: justify;
+}
+
+.sections ul li {
+  list-style-type: circle;
+  list-style-position: inside;
+  font-size: 0.9em;
+  line-height: 1.5em;
+  margin-right: 50px;
+}
+
+/* Style the divisions between the sections with the header of each one. I will create a shadow with the text in the middle, which will be the header content of each section */
+/* The .division will receive of the shadow element and the textDivision element. It will take 100% of the screen width, and receive the relative position. */
+.division {
+  margin-top: 80px;
+  width: 100%;
+  position: relative;
+}
+
+.division .shadow { /*The child element */
+  overflow: hidden; /* this property hidden (or auto) the content out of the div space; */
+  height: 20px;
+}
+
+.division .shadow:after { /*Pseudo class with the shadow */
+  content: '';
+  display: block;
+  margin: -25px auto 0; /* The block content will take the space from the .shadow element */
+  width: 100%;
+  height: 25px;
+  border-radius: 125px/12px; /* This property set the radius of the element and help to create the effect of the size shadow is decreasing when is getting the bord of the container*/
+  box-shadow: 0 0 8px var(--color-primary);
+}
+
+/* This element will receive the header content, and I will receive the elliptical shape: */
+.division .textDivision { 
+  width: 150px;
+  height: 67.5px;
+  padding: 10px;
+  position: absolute;
+  bottom: 100%; /* The position absolute inside of the father element (.division) */
+  margin-bottom: -44px; /* This property set the element on the middle of the shadow, because it takes the space of the next element */
+  left: 50%; /* Position the element in the middle of the screen */
+  margin-left: -75px; /* Helps to position the element in the middle of the screen */
+  border-radius: 100%; /* Set the elliptical shape to the element */
+  box-shadow: 0 2px 4px var(--color-primary); /*The shadow will help to highlight the element*/
+  background: white;
+}
+
+/* The text will be in the center of the father element. We set the line-height bigger, because the bord will be close to the father element's bord. The border-radius will set the elliptical shape to the element as the father element */
+.division .textDivision h2 {
+  position: absolute; /* Set the absolute */
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  right: 4px;
+  border-radius: 100%;
+  border: 1px dashed var(--color-primary);
+  text-align: center;
+  line-height: 75px;
+  font-size: 1.5em;
+}
+
+/* Style the disposition of the sections content: */
+.setDisplayFlex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.setRowReverse > .setDisplayFlex {
+  flex-direction: row-reverse;
+}
+
+.sections {
+  margin: 30px 10px;
+}
+
+.sectionImages {
+  width: 22%;
+  min-width: 280px;
+  height: 75%;
+  margin: 1em;
+}
+
+.sectionContent {
+  width: 60%;
+  padding: 5px;
+}
+
+.inspirationsContent {
+  /* min-height: 805px; */
+  margin: 50px 20px;
+}
+
+.tutorialContent {
+  margin: 50px 20px;
+}
+
+.tutorialContent p, .inspirationsContent p {
+  margin: 32px;
+}
+
+/* Make the video responsiveness in small screens. The video is inside a new container, and its position is absolute, and in the top of the container. If I don't put the iframe inside a container with relative position, the absolute position of iframe will be referent to the body and not to the father element; The size of the padding-bottom is the 56.25% of the width, the original proportion of the video; */
+.iframeContainer{
+  position: relative;
+  margin: 1em auto;
+  width: 70%;
+  padding-bottom: 39.375%; 
+  height: 0;
+}
+
+.iframeContainer iframe{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+h3 {
+  text-align: center;
+  margin: 0.5em;
+  font-size: 1.2em;
+}
+
+.sourcePattern {
+  display: block;
+  margin: 2px;
+  font-size: 0.8em;
+  text-align: right;
+  color: var(--color-secondary);
+}
+
+.patternsImage {
+  width: 30%;
+  margin: 1em;
+}
+
+.tablePattern {
+  width: 60%;
+  margin: 1em;
+}
+
+/* Style the table with the materials of the patterns */
+.tableContainer {
+  overflow-x: auto;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.050);
+}
+
+table {
+  width: 100%;
+  border-radius: 5px;
+  border-collapse: collapse;
+  color: var(--color-secondary);
+  font-family: var(--font-primary);
+}
+
+thead tr {
+  height: 2em;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.050);
+  text-align: left;
+}
+
+thead th {
+  padding: 0.5em 1em;
+  color: var(--color-primary);
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--color-tertiary);
+}
+
+tbody td {
+  height: 2em;
+  padding: 0.5em 1em;
+  
+}
+.carouselTools {
+  width: 80%;
+  margin: auto auto;
+}
+
+.carouselTools button {
+  background-color: white;
+  border: none;
+  border-radius: 125px/12px;
+  color: var(--color-secondary);
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.carouselTools button:hover {
+  color: var(--color-primary);
+  transition: 0.4s;
+}
+
+/* The pattern2 and the pattern3 elements will start hidden, and they will be shown in a carousel using javascript code: */
+.sections .inspirationsContent .carouselInactive {
+  display: none;
+}
+
+/* The class .carouselActive will set the display: block to the elements. The javascript code will add and remove the classes to make the carousel happens: */
+/* .sections .inspirationsContent .carouselActive {
+  display: flex;
+} */
+
+/* Style the footer elements: */
+.footer {
+  height: 100px;
+  background-position: center bottom; /* Because the image is higher than the header, I positioned it in the center of it. */
+}
+
+.footerContent {
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.400); /* Black Transparent */
+}
+
+.footerContent .copyright {
+  font-size: 14px;
+  color: white;
+}
+
+.footerContent a .fab {
+  padding: 1em;
+  color: white;
+  font-size: 150%;
+}
+
+.footerContent .fa-linkedin:hover {
+  color: var(--color-linkedin);
+}
+
+.footerContent .fa-github-square:hover {
+  color: var(--color-github);
+}
+
+/* Style the arrow icon in the center of the circle: */
+.backToTheTopIcon {
+  position: relative;
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: var(--color-primary);
+}
+
+.backToTheTopIcon .fa-arrow-up {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+/* The responsiveness of the page: When the screen is less than 900 pixels wide: */
+/* Hide all links of the menu, and show the element .iconMenu on the right side of the screen; */
+@media screen and (max-width: 900px) {
+  .navMenu .ulMenuBigScreen {
+    display: none;
+  }
+
+  .divMenuMobile a.iconMenu {
+    display: block;
+    float: right;
+    position: absolute;
+    right: 15px;
+    top: 55px;
+  }
+
+  .divMenuMobile .active {
+    float: right;
+    display: block;
+    margin: 3px 10px;
+  }
+
+  .divMenuMobile .active li {
+    text-align: right;
+    padding: 1px 10px;
+    font-size: 0.8em;
+  }
+
+   /* The video, the images and the contents will be resized */
+   .iframeContainer {
+    width: 80%;
+  }
+
+  .sectionImages {
+    width: 70%;
+    height: 75%;
+  }
+  
+  .sectionContent {
+    width: 80%;
+  }
+
+  .patternsImage {
+    width: 60%;
+  }
+  
+  .tablePattern {
+    width: 80%;
+  }
+}
+
+/* The responsiveness of the page: When the screen is less than 500 pixels wide: */
+@media screen and (max-width: 500px) {
+  header {
+    height: 200px;
+  }
+
+  h1 {
+    padding: 25px 15px 15px 15px;
+    font-size: 3em;
+  }
+
+  .divMenuMobile .active {
+    margin: 8px 5px;
+  }
+
+  .patternsImage {
+    margin: 0.5em;
+  }
+
+  .tablePattern {
+    margin: 0.5em 0;
+  }
+
+  .sections a {
+    text-decoration: underline;
+  }
+
+  table {
+    font-size: 0.8em;
+  }
+
+  thead th, tbody td {
+    padding: 0.5em;
+  }
+
+  .carouselTools button {
+    font-size: 20px;
+  }
+}
+</style>
+
+  <style>*, *::before, *::after { animation-play-state: paused !important; }</style><script>
+  window.console = window.console || function(t) {};
+  var consoleWarn = window.console.warn;
+  function warn(){ consoleWarn.apply(console, arguments); }
+  window.open = function(){ warn("window.open is disabled."); };
+  window.print   = function(){ warn("window.print is disabled."); };
+  window.alert   = function(){ warn("window.alert is disabled."); };
+  window.confirm = function(){ warn("window.confirm is disabled."); };
+  window.prompt  = function(){ warn("window.prompt is disabled."); };
+  window.Notification = function() { warn("HTML5 notifications are disabled."); };
+  function noop(){}
+  Object.keys(window.console).map(function(key){
+    window.console[key] = noop
+  });
+</script>
+
+  
+    <script>
+    (function() {
+      /*
+      * Capture all errors for this pen
+      **/
+      window.onerror = function(/* message, file, line */) {
+        return true;
+      };
+
+      /*
+      * Capture and kill Web Audio and Speech
+      */
+      if (typeof (AudioContext) != "undefined" || typeof (webkitAudioContext) != "undefined") {
+        AudioContext = function() {
+          return false;
+        };
+
+        webkitAudioContext = function() {
+          return false;
+        };
+      }
+
+      if (typeof (mozAudioContext) != "undefined") {
+        mozAudioContext = function() {
+          return false;
+        };
+      }
+
+      if ("speechSynthesis" in window) {
+        window.speechSynthesis = {};
+      }
+      if ("speak" in speechSynthesis) {
+        speechSynthesis.speak = function() {
+          return false;
+        };
+      }
+
+      // Kill the browser asking for access to the video cam or audio
+      navigator.getUserMedia = function() {
+      };
+      navigator.mozGetUserMedia = function() {
+      };
+      navigator.webkitGetUserMedia = function() {
+      };
+      navigator.mediaDevices.getUserMedia = function() {
+      };
+
+
+      /**
+      * Capture and kill animations after X number of seconds
+      **/
+      var __animationDuration = 4000;
+      var __animationsTimedOut = false;
+      var __animationRequests = [];
+      var __requestAnimationFrame = false;
+      var __cancelAnimationFrame = false;
+      var x, i;
+
+      var vendorsReqestAnimationFrame = [
+        "requestAnimationFrame",
+        "mozRequestAnimationFrame",
+        "webkitRequestAnimationFrame"
+      ];
+
+      // find the browsers requestAnimationFrame and cancelAnimationFrame
+      for (x = 0; x < vendorsReqestAnimationFrame.length; x++) {
+        if (!__requestAnimationFrame) {
+          __requestAnimationFrame = window[vendorsReqestAnimationFrame[x]
+          ];
+        }
+      }
+
+      __cancelAnimationFrame = window.cancelAnimationFrame || window.mozCancelAnimationFrame;
+
+      // Wrap the requestAnimationFrame so we can stop it in the future
+      function __reqFrame(callback, element) {
+        // after the timeout we no longer take requests
+        var timerID;
+        if (__animationsTimedOut) {
+          return 0;
+        } else {
+          timerID = __requestAnimationFrame(callback, element);
+          __animationRequests.push(timerID);
+
+          return timerID;
+        }
+      }
+
+      for (x = 0; x < vendorsReqestAnimationFrame.length; x++) {
+        window[vendorsReqestAnimationFrame[x]] = __reqFrame;
+      }
+
+      // Cancel the animations after expiration
+      setTimeout(function() {
+        for (i = 0; i < __animationRequests.length; i++) {
+          __cancelAnimationFrame(__animationRequests[i]);
+        }
+
+        var ss = window.document.createElement("style");
+        ss.textContent = "*, *::before, *::after { animation-play-state: paused !important; }";
+        var ref = window.document.getElementsByTagName("script")[0];
+        ref.parentNode.insertBefore(ss, ref);
+
+        __animationsTimedOut = true;
+      }, __animationDuration, "push");
+
+      /**
+      * Capture setInterval and setTimeout to kill after X number of seconds
+      **/
+      window.setInterval = (function(oldSetInterval) {
+        var registered = [];
+
+        function f(a,b) {
+          // check if the time has expired,
+          // after __animationDuration expires don't take anymore setIntervals
+          if (this.timedOut) {
+            return 0;
+          } else {
+            return registered[ registered.length ] = oldSetInterval(a,b);
+          }
+        }
+
+        f.clearAll = function() {
+          var r;
+
+          while (r = registered.pop()) {
+            clearInterval( r );
+          }
+
+          this.timedOut = true;
+        };
+
+        f.timedOut = false;
+
+        return f;
+      }(window.setInterval));
+
+      window.setTimeout = (function(oldSetTimeout) {
+        var registered = [];
+
+        // because some of our timeouts may time out afterwards
+        // we want to make sure they know the secret sauce to still use
+        // setTimeout after the time has expired, thats why we have a
+        // third param
+        function f(a, b, push) {
+          // check if the time has expired,
+          // after __animationDuration expires don't take anymore requests
+          if (this.timedOut && typeof(push) == "undefined") {
+            return 0;
+          } else {
+            // If push is there, never clear that interval
+            // so never add it to the registry
+            if (push) {
+              return oldSetTimeout(a,b);
+            } else {
+              return registered[ registered.length ] = oldSetTimeout(a,b);
+            }
+          }
+        }
+
+        f.clearAll = function() {
+          var r;
+
+          while (r = registered.pop()) {
+            clearTimeout( r );
+          }
+
+          this.timedOut = true;
+        };
+
+        f.timedOut = false;
+
+        return f;
+      }(window.setTimeout));
+
+      setTimeout(function() {
+
+        setTimeout.clearAll();
+        setInterval.clearAll();
+
+        // Stop Web Animations API
+        // Idea from Gregor: https://github.com/CodePen/CodePen-Bug-Reporting-Only/issues/173#issuecomment-203443301
+        // Status as of April 2020:
+        //  Chrome 80 = Stops animations
+        //  Firefox 75 = Stops animations
+        //  Safari 13 = Doesn't support WAAPI
+        //  Safari 13.1 = Stops animations
+
+        // Apparently this used to be done via `document.timeline`, but the modern method is to get the animations directly from the document.
+        let animations = ( typeof document.getAnimations === "function" && document.getAnimations() ) || (document.timeline && typeof document.timeline.getAnimations === "function" && document.timeline.getAnimations() )
+
+        if ( animations && animations.length ) {
+          animations.map(function(animation) {
+            animation.pause();
+          });
+        }
+
+      }, __animationDuration, "push");
+
+    }());
+  </script>
+
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body translate="no" onload="_l=&#39;t&#39;;" data-new-gr-c-s-check-loaded="14.1046.0" data-gr-ext-installed="">
+  
+
+
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amigurumi by Mônica</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+
+  <div class="container">
+    <header id="header" class="backgroundHeaderFooter" title="Amigurumi: one small brown bear next to a light green yarn on a light brown table">
+      <div class="headerContent">
+        <nav class="navMenu" id="myNavMenu">
+          <a href="https://cdpn.io/MonicaDalosto/fullcpgrid/ExbYOyR#header"><h1>Amigurumi</h1></a>
+          <div class="divMenu">
+            <ul class="ulMenuBigScreen">
+              <li><a href="https://cdpn.io/MonicaDalosto/fullcpgrid/ExbYOyR#about">About</a></li>
+              <li><a href="https://cdpn.io/MonicaDalosto/fullcpgrid/ExbYOyR#origin">Origin</a></li>
+              <li><a href="https://cdpn.io/MonicaDalosto/fullcpgrid/ExbYOyR#technique">Technique</a></li>
+              <li><a href="https://cdpn.io/MonicaDalosto/fullcpgrid/ExbYOyR#materials">Materials</a></li>
+              <li><a href="https://cdpn.io/MonicaDalosto/fullcpgrid/ExbYOyR#tutorial">Tutorial</a></li>
+              <li><a href="https://cdpn.io/MonicaDalosto/fullcpgrid/ExbYOyR#inspirations">Inspirations</a></li>
+            </ul>
+          </div>
+          <div class="divMenuMobile">
+            <a href="javascript:void(0);" class="iconMenu" onclick="showNavBar()">
+              <i class="fas fa-bars"></i>
+            </a>
+            <ul id="menuMobile" class="ulMenuSmallScreen">
+              <li><a href="https://cdpn.io/MonicaDalosto/fullcpgrid/ExbYOyR#about">About</a></li>
+              <li><a href="https://cdpn.io/MonicaDalosto/fullcpgrid/ExbYOyR#origin">Origin</a></li>
+              <li><a href="https://cdpn.io/MonicaDalosto/fullcpgrid/ExbYOyR#technique">Technique</a></li>
+              <li><a href="https://cdpn.io/MonicaDalosto/fullcpgrid/ExbYOyR#materials">Materials</a></li>
+              <li><a href="https://cdpn.io/MonicaDalosto/fullcpgrid/ExbYOyR#tutorial">Tutorial</a></li>
+              <li><a href="https://cdpn.io/MonicaDalosto/fullcpgrid/ExbYOyR#inspirations">Inspirations</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <div class="division">
+        <div class="shadow">
+        </div>
+        <div class="textDivision">
+          <h2 id="about">About</h2>
+        </div>
+      </div>
+      <section id="sectionAbout" class="sections">
+        <div class="setDisplayFlex">
+          <img class="sectionImages subDivTextImageAbsolute" src="./pexels-photo-2731821.jpeg" alt="One amigurumi: a white bunny wearing blue jumpsuit inside a paper box">
+          <div class="sectionContent">
+            <p>Amigurumi is absolutely everywhere at the moment. Blossoming in Japan, the kawaii designs have the world taking up crochet to recreate and design their own creatures and dolls.</p>
+            <p>Amigurumi (あみぐるみ) is just one of the many ways of knitting or crocheting crafts and toys. The word is the blend of the words 'ami' (あみ) and 'nuigurumi' (ぬいぐるみ), and it means crocheted or knitted stuffed toy.</p>
+            <p>These toys are easy and swift to make because of their small size. To create them, crocheting is more common than knitting, and instead of the usual row-by-row Western method, the thread is usually worked in rounds. This method simplifies the creation process.</p>
+          </div>
+        </div>
+      </section>
+      <div class="division">
+        <div class="shadow">
+        </div>
+        <div class="textDivision">
+          <h2 id="origin">Origin</h2>
+        </div>
+      </div>
+      <section id="sectionOrigin" class="setRowReverse sections">
+        <div class="setDisplayFlex">
+          <img class="sectionImages" src="./pexels-photo-5488397.jpeg" alt="Amigurumi: One small bunny stand on a vase full of the substrate with the sun lighting up on it">
+          <div class="sectionContent">
+            <p>Some historians think that the origin of this art can be found in China, where there are records of crocheted and knitted dolls from the Shang dynasty. The craft started to take hold in Japan with the interaction between China and Japan during the Edo period, at the start of the 17th century.</p>
+            <p>Until the late 19th century, amigurumi continued to spread widely due to the start of trading with the Dutch, who introduced knitting as a technique. Knitting also progressed thanks to the samurai, who began using this art to create decorations and garments for their katana, winter wear, gloves and even socks (tabi, たび).</p>
+            <p>During the Meiji period and until the beginning of World War I, with the start of the industrialisation of the country, education began to change. Thousands of students were studying abroad, and many foreign teachers were hired in Japan. During this time period, more women were pushed to learn Western-style needlework.</p>
+            <p>Amigurumi began to be more common in the late 1970s, when the kawaii (かわいい) culture emerged, thanks to characters like Hello Kitty. In the late ’80s, amigurumi’s art boomed thanks to an NHK show called Ami.</p>
+            <p>The craft became really popular in the rest of the world between 2003 and 2006, when you could start finding thousands of free online patterns and video tutorials to help you learn.</p>
+          </div>
+        </div>
+      </section>
+      <div class="division">
+        <div class="shadow">
+        </div>
+        <div class="textDivision">
+          <h2 id="technique">Technique</h2>
+        </div>
+      </div>
+      <section id="sectionTechnique" class="sections">
+        <div class="setDisplayFlex">
+          <img class="sectionImages" src="./pexels-photo-7585775.jpeg" alt="A person seated on the bed, making crochet with an orange yarn">
+          <div class="sectionContent">
+            <p>Amigurumi can be knitted, though they are usually crocheted out of yarn or thread, using the basic techniques of crochet (such as single crochet stitch (sc), double crochet (dc), invisible decrease (inv.dec)).</p>
+            <p>It can be worked as one piece or, more usually, in sections which are sewed or crocheted together. In crochet, amigurumi are typically worked in spiral rounds to prevent "striping", a typical feature of joining crochet rounds in a project.</p>
+            <p>One of the first things to learn is how to do the ‘magic ring’. With this technique, you work in a circular pattern that allows you to adjust the diameter of the central ring so that it disappears. That’s the major difference between amigurumi and the usual crochet, which leaves the central circle visible.</p>
+            <p>Small gauge crochet hooks or knitting needles are typically used to achieve a tight gauge that does not allow the stuffing to show through the fabric. Stuffing can be standard polyester, wool, or cotton craft stuffing, but may be improvised from other materials.</p>
+            <p>Wires, such as pipe cleaners or floral wire, may be used to make the doll posable. Plastic pellets, glass pebbles, and even stones may be inserted beneath the stuffing to distribute weight at the bottom of the figure.</p>
+          </div>
+        </div>
+      </section>
+      <div class="division">
+        <div class="shadow">
+        </div>
+        <div class="textDivision">
+          <h2 id="materials">Materials</h2>
+        </div>
+      </div>
+      <section id="sectionMaterials" class="setRowReverse sections">
+        <div class="setDisplayFlex">
+          <img class="sectionImages" src="./photo-1633930965364-a95fe3dbf06d" alt="Two yarn balls, some crochet hooks, some pieces of crochet, and a cup of coffee on a white table">
+          <div class="sectionContent">
+            <p>Unlike many other crafts, you really don’t need much to get started with crochet and amigurumi. Although there are fun extras you can purchase, you really only need some crochet hooks and your chosen yarn which makes it a cheap and portable hobby to take up.</p>
+            <p>To bring your amigurumi creations to life, you’ll need:</p>
+            <ul>
+              <li>A set of crochet hooks. An average set will usually range between 2mm to 6mm The larger the hook the bigger the holes in your work so for amigurumi you’ll be generally working with smaller hooks: 2-4.</li>
+              <li>Your chosen yarn. Yarn comes in different thicknesses and usually falls into these groups : animal-fiber based yarn like wool, plant-based fiber like cotton and hemp, and synthetic fiber yarns like acrylic.</li>
+            </ul>
+            <p>As you move on some other essentials, in addition to hook and yarn, will become necessary. For example:</p>
+            <ul>
+              <li>Toy stuffing (polyester works best).</li>
+              <li>Safety eyes, though you can also use cotton thread to stitch on eyes and other details.</li>
+              <li>Embroidery thread.</li>
+              <li>Crochet needles for darning which have a much bigger eye to thread the yarn in easier.</li>
+              <li>Stitch markers which are a definite must - if you don’t want to buy them, you can use bobby pins, a light hooked earring or any other item that will stay put.</li>
+              <li>Row counter - you can get digital row counters but you can also just use a pen and paper to note down where you are with regards to your pattern.</li>
+            </ul>
+            <p>You can find all these materials in any store that sells trimming and accessories.</p>
+          </div>
+        </div>
+      </section>
+      <div class="division">
+        <div class="shadow">
+        </div>
+        <div class="textDivision">
+          <h2 id="tutorial">Tutorial</h2>
+        </div>
+      </div>
+      <section id="sectionTutorial" class="sections">
+        <div class="tutorialContent">
+          <p>Even if you’re just a beginner, you can still create amazing things. Amigurumi is perfect both for kids and adults. To help you realize how easy is to start, we place a video below, it will teach you how to create a small cat doll since the beginning. Enjoy!!!</p>
+          <p></p>
+        </div>
+        <div class="iframeContainer">
+          <iframe src="./removed_by_codepen.html" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+        </div>
+      </section>
+      <div class="division">
+        <div class="shadow">
+        </div>
+        <div class="textDivision">
+          <h2 id="inspirations">Inspirations</h2>
+        </div>
+      </div>
+      <section id="sectionInspirations" class="sections">
+        <div class="inspirationsContent">
+          <p>You can find dozens of video tutorials on YouTube and hundreds of free patterns online. If you prefer to use books, there are tons of them in any language you prefer. If you don't know how to start, we present you some inspirations from <a href="https://amigurumi.today/" target="_blank">Amigurumi Today</a>. Choose one option and put your hands to work. The only limitation is your imagination!</p>
+          <div id="pattern1" class="patterns setDisplayFlex">
+            <img class="patternsImage" src="./large-amineko-free-amigurumi-pattern.jpg" alt="Crochet large Ami Cat amigurumi pattern by Amigurumi Today">
+            <div class="tablePattern">
+              <h3>Large Ami Cat</h3>
+              <div class="tableContainer">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Materials</th>
+                      <th>Quantity</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Mixed yarn</td>
+                      <td>1 ball</td>
+                      <td>100 g / 330 m</td>
+                    </tr>
+                    <tr>
+                      <td>White yarn</td>
+                      <td>1/2 ball</td>
+                      <td>100 g / 330 m</td>
+                    </tr>
+                    <tr>
+                      <td>Black thread</td>
+                      <td>Some</td>
+                      <td>For the face</td>
+                    </tr>
+                    <tr>
+                      <td>Polyester fiberfill</td>
+                      <td>100 g</td>
+                      <td>For stuffing</td>
+                    </tr>
+                    <tr>
+                      <td>Crochet hook</td>
+                      <td>1 unit</td>
+                      <td>1.7 mm</td>
+                    </tr>
+                    <tr>
+                      <td>Sewing needle</td>
+                      <td>1 unit</td>
+                      <td>For the finishes</td>
+                    </tr>
+                    <tr>
+                      <td>Scissor</td>
+                      <td>1 unit</td>
+                      <td>For the finishes</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <a href="https://amigurumi.today/large-ami-cat-crochet-pattern/" target="_blank" class="sourcePattern">Visit the original pattern webpage</a>
+            </div>
+          </div>
+          <div id="pattern2" class="carouselInactive patterns setDisplayFlex">
+            <img class="patternsImage" src="./Stripy-rabbit-crochet-pattern-by-Amigurumi-Today.jpg" alt="Crochet stripy rabbit amigurumi pattern By Amigurumi Today">
+            <div class="tablePattern">
+              <h3>Stripy Rabbit</h3>
+              <div class="tableContainer">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Materials</th>
+                      <th>Quantity</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Pink yarn</td>
+                      <td>1 ball</td>
+                      <td>50 g / 200 m</td>
+                    </tr>
+                    <tr>
+                      <td>Neon yellow yarn</td>
+                      <td>1 ball</td>
+                      <td>50 g / 200 m</td>
+                    </tr>
+                    <tr>
+                      <td>Lilac yarn</td>
+                      <td>1 ball</td>
+                      <td>50 g / 200 m</td>
+                    </tr>
+                    <tr>
+                      <td>Light blue yarn</td>
+                      <td>1 ball</td>
+                      <td>50 g / 200 m</td>
+                    </tr>
+                    <tr>
+                      <td>Green yarn</td>
+                      <td>1 ball</td>
+                      <td>50 g / 200 m</td>
+                    </tr>
+                    <tr>
+                      <td>Polyester fiberfill</td>
+                      <td>100 g</td>
+                      <td>For stuffing</td>
+                    </tr>
+                    <tr>
+                      <td>Safety eyes</td>
+                      <td>1 pair</td>
+                      <td>10 mm</td>
+                    </tr>
+                    <tr>
+                      <td>Brown thread</td>
+                      <td>Some</td>
+                      <td>For the nose</td>
+                    </tr>
+                    <tr>
+                      <td>Crochet hook</td>
+                      <td>1 unit</td>
+                      <td>2.0 mm</td>
+                    </tr>
+                    <tr>
+                      <td>Sewing needle</td>
+                      <td>1 unit</td>
+                      <td>For the finishes</td>
+                    </tr>
+                    <tr>
+                      <td>Scissor</td>
+                      <td>1 unit</td>
+                      <td>For the finishes</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <a href="https://amigurumi.today/crochet-stripy-rabbit-amigurumi-pattern/" target="_blank" class="sourcePattern">Visit the original pattern webpage</a>
+            </div>
+          </div>
+          <div id="pattern3" class="carouselInactive patterns setDisplayFlex">
+            <img class="patternsImage" src="./Crochet-bear-in-overalls-free-pattern-by-Amigurumi-Today.jpg" alt="Crochet bear in overalls free pattern By Amigurumi Today">
+            <div class="tablePattern">
+              <h3>Crochet bear in overalls</h3>
+              <div class="tableContainer">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Materials</th>
+                      <th>Quantity</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Brown yarn with plush</td>
+                      <td>1 ball</td>
+                      <td>100 g / 120 m</td>
+                    </tr>
+                    <tr>
+                      <td>Yellow yarn with plush</td>
+                      <td>1 ball</td>
+                      <td>100 g / 120 m</td>
+                    </tr>
+                    <tr>
+                      <td>Polyester fiberfill</td>
+                      <td>150 g</td>
+                      <td>For stuffing</td>
+                    </tr>
+                    <tr>
+                      <td>Safety eyes</td>
+                      <td>1 pair</td>
+                      <td>12 mm</td>
+                    </tr>
+                    <tr>
+                      <td>Black semi-cotton yarn</td>
+                      <td>Some</td>
+                      <td>For nose</td>
+                    </tr>
+                    <tr>
+                      <td>Decorative button</td>
+                      <td>1 unit</td>
+                      <td>For trousers</td>
+                    </tr>
+                    <tr>
+                      <td>Plastic limb joints</td>
+                      <td>1 pair</td>
+                      <td>20 mm</td>
+                    </tr>
+                    <tr>
+                      <td>Crochet hook</td>
+                      <td>1 unit</td>
+                      <td>2.0 mm</td>
+                    </tr>
+                    <tr>
+                      <td>Crochet hook</td>
+                      <td>1 unit</td>
+                      <td>4.0 mm</td>
+                    </tr>
+                    <tr>
+                      <td>Sewing needle</td>
+                      <td>1 unit</td>
+                      <td>For the finishes</td>
+                    </tr>
+                    <tr>
+                      <td>Scissor</td>
+                      <td>1 unit</td>
+                      <td>For the finishes</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <a href="https://amigurumi.today/crochet-bear-in-overalls-free-pattern/" target="_blank" class="sourcePattern">Visit the original pattern webpage</a>
+            </div>
+          </div>
+        </div>
+        <div class="carouselTools setDisplayFlex">
+          <button id="backward"><i class="fas fa-arrow-left"></i></button>
+          <button id="pause"><i class="fas fa-pause"></i></button>
+          <button id="forward"><i class="fas fa-arrow-right"></i></button>
+        </div>
+      </section>
+    </main>
+    <footer class="footer backgroundHeaderFooter" title="Amigurumi: one small brown bear next to a light green yarn on a light brown table">
+      <div class="footerContent setDisplayFlex">
+        <p class="copyright">© 2022 Mônica Dalosto - Hack Your Future</p>
+        <ul class="setDisplayFlex">
+          <li>
+            <a href="https://www.linkedin.com/in/monica-dalosto/"><i class="fab fa-linkedin"></i></a>
+          </li>
+          <li>
+            <a href="https://github.com/MonicaDalosto"><i class="fab fa-github-square"></i></a>
+          </li>
+        </ul>
+        <a class="backToTheTopIcon" href="https://cdpn.io/MonicaDalosto/fullcpgrid/ExbYOyR#header"><i class="fas fa-arrow-up"></i></a>
+      </div>
+    </footer>
+  </div>
+  <script src="./carousel.js" <="" script="">
+  <script src="script.js"></script>
+
+
+    <script src="./stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
+
+  
+      <script id="rendered-js">
+/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the .iconMenu */
+function showNavBar() {
+  let menuMobile = document.getElementById("menuMobile");
+  if (menuMobile.className.includes('active')) {
+    menuMobile.classList.remove('active');
+  } else {
+    menuMobile.classList.add('active');
+  }
+}
+
+// I will create a code to hidden all the .patterns divs inside the section Inspirations, and then create a carousel to show just one pattern, which will be swapped every 3 seconds:
+
+let paused = false; // whether the slideshow is paused or not
+let counter = 1; // the counter variable that keeps track of which image you are showing
+
+const changeElementPattern = clickedButtonFunction => {
+  const elementPattern = document.getElementById("pattern" + counter);
+  if (!elementPattern.classList.contains('carouselInactive')) {
+    elementPattern.classList.add('carouselInactive');
+    clickedButtonFunction();
+    const nextElementPattern = document.getElementById("pattern" + counter);
+    nextElementPattern.classList.remove('carouselInactive');
+  }
+};
+
+const forward = () => {
+  counter = counter + 1;
+  if (counter > 3) {
+    counter = 1;
+  }
+};
+
+const backward = () => {
+  counter = counter - 1;
+  if (counter < 1) {
+    counter = 3;
+  }
+};
+
+function changeValuePaused() {
+  paused = !paused;
+}
+
+let forwardButton = document.getElementById('forward');
+forwardButton.addEventListener('click', function () {
+  changeElementPattern(forward);
+});
+
+let backwardButton = document.getElementById('backward');
+backwardButton.addEventListener('click', function () {
+  changeElementPattern(backward);
+});
+
+let pauseButton = document.getElementById('pause');
+pauseButton.addEventListener('click', changeValuePaused);
+
+setInterval(() => {
+  if (!paused) {
+    changeElementPattern(forward);
+  }
+}, 3000);
+//# sourceURL=pen.js
+    </script>
+
+    <script style="display: none !important;">
+  (function() {
+    var __animationDuration = 4000;
+
+    setTimeout(function() {
+      // If onload hasn't been called, stop all requests after 2 seconds
+      if (typeof(_l) == "undefined") {
+        if (window.stop !== undefined) window.stop();
+        else if (document.execCommand !== undefined) document.execCommand("Stop", false);
+      }
+    }, 2000, "push");
+
+    /*
+    * Capture and kill CSS animations after X number of seconds
+    */
+    function pauseAnimations() {
+      var body = document.getElementsByTagName("body")[0];
+
+      if (body.addEventListener) {
+        body.addEventListener("webkitAnimationStart", listener, false);
+        body.addEventListener("webkitAnimationIteration", listener, false);
+        body.addEventListener("animationstart", listener, false);
+        body.addEventListener("animationiteration", listener, false);
+      }
+    }
+
+    function listener(e) {
+
+      var targetEl;
+
+      if (e.type == "webkitAnimationStart" || e.type == "webkitAnimationIteration") {
+
+        targetEl = e.target;
+
+        setTimeout(function() {
+          targetEl.style.webkitAnimationPlayState = "paused";
+        }, __animationDuration, "push");
+
+      } else if (e.type == "animationstart" || e.type == "animationiteration") {
+
+        targetEl = e.target;
+
+        setTimeout(function() {
+          targetEl.style.MozAnimationPlayState = "paused";
+        }, __animationDuration, 'push');
+
+      }
+    }
+
+    pauseAnimations();
+
+    // Pause all audio elements, allow the audio/video
+    // elements to render before stopping them
+    function pauseElementTypes(type) {
+      for (var i = 0, els = document.getElementsByTagName(type); i < els.length; i++) {
+        els[i].pause();
+      }
+    }
+
+    // Wait until the elements have been created to pause them
+    setTimeout(function() {
+      pauseElementTypes("audio");
+      pauseElementTypes("video");
+    }, 100);
+
+  }());
+  </script>
+
+
+  <script src="./iframeRefreshCSS-4793b73c6332f7f14a9b6bba5d5e62748e9d1bd0b5c52d7af6376f3d1c625d7e.js"></script>
+
+
+
+ 
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
