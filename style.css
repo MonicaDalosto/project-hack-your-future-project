@@ -116,10 +116,6 @@ p {
   text-align: justify;
 }
 
-/* .sections ul {
-  margin-right: 50px;
-}  */
-
 .sections ul li {
   list-style-type: circle;
   list-style-position: inside;
@@ -307,6 +303,7 @@ tbody td {
   border-radius: 125px/12px;
   color: var(--color-secondary);
   font-size: 40px;
+  cursor: pointer;
 }
 
 .carouselTools button:hover {
@@ -390,12 +387,13 @@ tbody td {
   .divMenuMobile .active {
     float: right;
     display: block;
-    margin: 5px 10px;
+    margin: 3px 10px;
   }
 
   .divMenuMobile .active li {
     text-align: right;
     padding: 1px 10px;
+    font-size: 0.8em;
   }
 
    /* The video, the images and the contents will be resized */
@@ -433,11 +431,7 @@ tbody td {
   }
 
   .divMenuMobile .active {
-    margin: 12px 5px;
-  }
-
-  .divMenuMobile .active li {
-    font-size: 0.8em;
+    margin: 8px 5px;
   }
 
   .patternsImage {
