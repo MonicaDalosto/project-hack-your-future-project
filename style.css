@@ -37,7 +37,23 @@
 }
 
 /* Before I start to style the project, I want to reset the default styles from the browsers. By resetting I can avoid different defaults from different browsers; Some properties are more general an other more specific;*/
-body, main, header, section, footer, div, h1, h2, h3, p, header ul, header li, footer ul, footer li, header a, footer a, .sections a { 
+body, 
+main, 
+header, 
+section, 
+footer, 
+div, 
+h1, 
+h2, 
+h3, 
+p, 
+header ul, 
+header li, 
+footer ul, 
+footer li, 
+header a, 
+footer a, 
+.sections a { 
   margin: 0;
   padding: 0;
   list-style: none;
@@ -153,6 +169,7 @@ p {
   font-size: 0.9em;
   line-height: 1.5em;
   margin-right: 50px;
+  text-align: justify;
 }
 
 /* Style the divisions between the sections with the header of each one. I will create a shadow with the text in the middle, which will be the header content of each section */

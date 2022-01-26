@@ -1,4 +1,4 @@
-// I will create a code to add e/or remove the class .carouselInactive of the Html elements #pattern1, #pattern2, and #pattern3.
+// Toggle between adding and removing the class .carouselInactive class of the Html elements #pattern1, #pattern2, and #pattern3.
 // The class .carouselInactive has the style display: none;
 // When the page is loaded, just the #pattern1 will be shown;
 // Then the setInterval function will invoke the function changeElementPattern(forward), every three minutes;
