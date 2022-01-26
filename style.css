@@ -1,11 +1,33 @@
-/* Adding some fonts from fonts.google: */
+/* The self introduction video: https://www.youtube.com/watch?v=ib-FZzErKwg */
+
+/* The structure of the project is/has:
+- A div .container inside the body, which surround all the page's content;
+- A Header, with a div inside with the H1 and the navbar. This div will have the fixed position;
+- The Main element contains 6 sections with content;
+- The header (h2) of the sections is positioned between the sections, inside a div with the shadow effect;
+- One youtube video embedded in one section;
+- The last section .Inspirations has 3 divs with content (patterns). I will create a javascript carousel to show one pattern at a time;
+- A Footer, with the Linkedin and Github icons, and a arrow icon (to go back to the top);
+- The media responsiveness, with adaptations for screens smaller than 900px and 500px;
+- Some images from Pexels or Unsplash;
+- Two differents font-families from Google Fonts;
+- The color palette with 3 color, besides black and white;
+- The texts of the project were grabbed from the other websites and they are not mine;
+*/
+
+/* Adding some fonts from fonts.google: Amigurumi is a handmade work, so I've chosen two font-families that evoke it. Then I found them on Google Fonts and added in my project. */
 @import url('https://fonts.googleapis.com/css2?family=Delius&family=Sacramento&display=swap');
 
-/* Set the colors for the webpage */
+/* The color palette of the project is based on the image I will place as a background-image for the Header and the Footer. I used the Adobe tool to extract some colors from the image. */
+
+/* To be easyer to use the colors and the fonts inside my code, I am customizing the properties color and font on the :root */
 :root {
   --color-primary: #261210;
   --color-secondary: #AD9C80;
   --color-tertiary: #f2f2f2;
+
+  --color-background1: #B5B5A9;
+  --color-background2: #C9DCE3;
   
   --color-linkedin: #0077b5;
   --color-github: #171515;
@@ -14,7 +36,7 @@
   --font-secondary: 'Sacramento', cursive;
 }
 
-/* Reset some styles from the browser; */
+/* Before I start to style the project, I want to reset the default styles from the browsers. By resetting I can avoid different defaults from different browsers; Some properties are more general an other more specific;*/
 body, main, header, section, footer, div, h1, h2, h3, p, header ul, header li, footer ul, footer li, header a, footer a, .sections a { 
   margin: 0;
   padding: 0;
@@ -22,34 +44,34 @@ body, main, header, section, footer, div, h1, h2, h3, p, header ul, header li, f
   text-decoration: none;
 }
 
-/* General style: */
+
+/* The .container will have the max-width as 1140px and be centralize to show the content in a good look way on the big screens. I will set a smooth box-shadow to create the illusion of depth, and I will add a radial-gradient on the body's background to simulate a natural lighting. */
 body {
-  background-image: radial-gradient(circle farthest-side, #B5B5A9, #C9DCE3);
+  background-image: radial-gradient(circle farthest-side, var(--color-background1), var(--color-background2));
 }
 
-/* Style the .container: distribuition, max width etc. It is the div inside the body, which surround all the page's content. I set the max-width to show the content in a good look way on the big screens.  */
 .container {
-  display: flex;
-  flex-direction: column;
   max-width: 1140px;
   margin: auto auto; /* Put the container on the center of the page*/
   background-color: white;
   box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.200);
 }
-/* I created a class that is styling the background image of Header and Footer. This image doesn't have the alt attribute, so I have added a title attribute on each element instead.*/
+/* I will place an image as a background for the Header and the Footer, so then I created a class that is styling the background image for both elements. This image doesn't have the alt attribute, so I have added a title attribute on each element instead. */
+
 .backgroundHeaderFooter {
   background-image: url(https://images.pexels.com/photos/4792086/pexels-photo-4792086.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
   background-size: cover; /* The image is covering all the header/footer background, because the image is less wider than the container; */
 }
 
-/* Style the header: I set the image of some Amigurumis as a background of the header.*/
+/* I will add some media responsiveness in my project, and I will add the specific comments for that part of the style, if it is necessary. */
+/* The Header will have a fixed height, and the image on the background is higher, so I will centralized it. */
 header {
   background-position: center center; /* Because the image is higher than the header, I positioned it in the center of it. */
   height: 400px; /* */
-  position: relative;
+  /* position: relative; */
 }
 
-/* Style the div inside the header, which contains the logo img, the h1, and the navigation bar */
+/* I added a div inside the Header, which will receive the position fixed. This div contains the h1 and the navigation bar. Then I will defined a Black transparent background with the z-index 1 to make the white content visible against the background of the whole page. */
 header .headerContent {
   background-color: rgba(0, 0, 0, 0.400); /* Black Transparent */
   position: fixed;
@@ -60,6 +82,7 @@ header .headerContent {
   height: 120px;
 }
 
+/* Style the h1, it should be on the left of the page; */
 h1 {
   padding: 10px 15px 10px 50px;
   font-size: 4em;
@@ -73,13 +96,14 @@ h1 {
   align-items: center;
 }
 
+/* Style the navigation bar (menu) on the right of the page; */
 .navMenu .divMenu {
   float: right;
   padding: 55px 15px 10px 15px;
   position: relative;
 }
 
-/* Style the links inside the navigation bar, and the float on the left of the page: */
+/* Style the links inside the navigation bar; */
 .navMenu .ulMenuBigScreen li {
   display: inline;
   margin: 0 10px;
@@ -91,18 +115,27 @@ h1 {
   font-size: 1em;
 }
 
-/* Customize the navMenu when href on hover, the text decorarion will be underline: */
-.navMenu a:hover, .sections a:hover {
+/* The project have the Hrefs on the menu and inside the section, I will customize them on hover, the text decorarion will be underline: */
+.navMenu a:hover,
+.sections a:hover {
   text-decoration: underline;
 }
 
-/* Hide the .ilMenuSmallScreen that should be shown just in certain moments on the smalls screens. Inside of it, it will have an .iconMenu, which will open and close the .navMenu */
-.navMenu .ulMenuSmallScreen, a.iconMenu {
+/* The project has two navbars inside the menu, one for big screens and another one for small screens (mobile), and an .iconMenu.
+On big screens, I will hide the .ulMenuSmallScreen and the .iconMenu.
+On small screens, I will hide .ulMenuBigScreen and show the .iconMenu. 
+The .ulMenuSmallScreen will be shown shown just when the users click on the .iconMenu on the smalls screens. */
+.navMenu .ulMenuSmallScreen, 
+a.iconMenu {
   display: none;
 }
 
 /* Style the other elements of the webpage: */
-h2, h3, p, .sections li, .sections p a {
+h2, 
+h3, 
+p, 
+.sections li, 
+.sections p a {
   font-family: var(--font-primary);
   color: var(--color-primary);
 }
@@ -113,6 +146,7 @@ p {
   text-align: justify;
 }
 
+/* Style the list inside the .inspiration section: */
 .sections ul li {
   list-style-type: circle;
   list-style-position: inside;
@@ -130,7 +164,7 @@ p {
 }
 
 .division .shadow { /*The child element */
-  overflow: hidden; /* this property hidden (or auto) the content out of the div space; */
+  overflow: hidden; /* this property hidden the content out of the div space, making the div as a line; */
   height: 20px;
 }
 
@@ -149,23 +183,19 @@ p {
   width: 150px;
   height: 67.5px;
   padding: 10px;
-  position: absolute;
+  position: absolute; /* Set the absolute position inside the .division*/
   bottom: 100%; /* The position absolute inside of the father element (.division) */
   margin-bottom: -44px; /* This property set the element on the middle of the shadow, because it takes the space of the next element */
   left: 50%; /* Position the element in the middle of the screen */
   margin-left: -75px; /* Helps to position the element in the middle of the screen */
   border-radius: 100%; /* Set the elliptical shape to the element */
   box-shadow: 0 2px 4px var(--color-primary); /*The shadow will help to highlight the element*/
-  background: white;
+  background: white; /*The white will hide the shadow behind the element*/
 }
 
 /* The text will be in the center of the father element. We set the line-height bigger, because the bord will be close to the father element's bord. The border-radius will set the elliptical shape to the element as the father element */
 .division .textDivision h2 {
-  position: absolute; /* Set the absolute */
-  /* top: 4px;
-  bottom: 4px;
-  left: 4px;
-  right: 4px; */
+  position: absolute; /* Set the absolute position inside the .division*/
   inset: 4px; /* This property is a shorthand to define the top, right, bottom, left properties;*/
   border-radius: 100%;
   border: 1px dashed var(--color-primary);
@@ -182,10 +212,12 @@ p {
   align-items: center;
 }
 
+/* Style the specific disposition for two sections content */
 .setRowReverse > .setDisplayFlex {
   flex-direction: row-reverse;
 }
 
+/* Style the sections and the divs inside the sections: */
 .sections {
   margin: 30px 10px;
 }
@@ -203,7 +235,6 @@ p {
 }
 
 .inspirationsContent {
-  /* min-height: 805px; */
   margin: 50px 20px;
 }
 
@@ -211,7 +242,9 @@ p {
   margin: 50px 20px;
 }
 
-.tutorialContent p, .inspirationsContent p {
+/* Those two P element will receive a specific margin, because they won't be inside a .sectionContent div;*/
+.tutorialContent p, 
+.inspirationsContent p {
   margin: 32px;
 }
 
@@ -232,12 +265,14 @@ p {
   height: 100%;
 }
 
+/* Style the content inside the .Inspiration  */
 h3 {
   text-align: center;
   margin: 0.5em;
   font-size: 1.2em;
 }
 
+/* This will be the href of the patterns source: */
 .sourcePattern {
   display: block;
   margin: 2px;
@@ -256,7 +291,7 @@ h3 {
   margin: 1em;
 }
 
-/* Style the table with the materials of the patterns */
+/* Style the table with the materials of the patterns, inside of .inspirations */
 .tableContainer {
   overflow-x: auto;
   box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.050);
@@ -290,6 +325,8 @@ tbody td {
   padding: 0.5em 1em;
   
 }
+
+/* Style the div with the icons of the carousel */
 .carouselTools {
   width: 80%;
   margin: auto auto;
@@ -309,15 +346,10 @@ tbody td {
   transition: 0.4s;
 }
 
-/* The pattern2 and the pattern3 elements will start hidden, and they will be shown in a carousel using javascript code: */
+/* To make the carousel happens, I created a class .carouselInactive that will hide the the patterns. When the page is loaded, just the #pattern1 will be shown and the #pattern2 and the #pattern3 elements will start hidden (they will have this class), and then will be hidden/shown using javascript code: */
 .sections .inspirationsContent .carouselInactive {
   display: none;
 }
-
-/* The class .carouselActive will set the display: block to the elements. The javascript code will add and remove the classes to make the carousel happens: */
-/* .sections .inspirationsContent .carouselActive {
-  display: flex;
-} */
 
 /* Style the footer elements: */
 .footer {
@@ -381,7 +413,7 @@ tbody td {
     right: 15px;
     top: 55px;
   }
-
+  /* To make the .ulMenuSmallScreen be shown, the javascript will add the class.active to the same element when the .iconMenu is clicked */
   .divMenuMobile .active {
     float: right;
     display: block;
@@ -394,7 +426,7 @@ tbody td {
     font-size: 0.8em;
   }
 
-   /* The video, the images and the contents will be resized */
+   /* The video, the table, the images and the contents will be resized */
    .iframeContainer {
     width: 80%;
   }
@@ -418,6 +450,7 @@ tbody td {
 }
 
 /* The responsiveness of the page: When the screen is less than 500 pixels wide: */
+/* The header, some elements and divs will be resized */
 @media screen and (max-width: 500px) {
   header {
     height: 200px;
@@ -440,6 +473,7 @@ tbody td {
     margin: 0.5em 0;
   }
 
+  /* With this screen size the hover won't work, so to show to the user that has a href, the element will receive the text-decoration; */
   .sections a {
     text-decoration: underline;
   }
